@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ai blog.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E7%9B%AE%E5%BD%95">目录</h1>
+<ul>
+<li><a href="#%E7%9B%AE%E5%BD%95">目录</a></li>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a>
+<ul>
+<li><a href="#gfw-%E4%B8%8E-closeai%E5%A2%99%E5%86%85%E4%B9%8B%E7%97%9B">GFW 与 CloseAI，墙内之痛</a></li>
+<li><a href="#%E4%BA%86%E8%A7%A3-openai-llms">了解 OpenAI LLMs</a></li>
+<li><a href="#princing">Princing</a></li>
+</ul>
+</li>
+<li><a href="#%E5%88%9D%E9%98%B6chatgpt">初阶：ChatGPT</a>
+<ul>
+<li><a href="#important-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E6%8E%A8%E8%8D%90%E8%B4%AD%E4%B9%B0-openai-%E8%B4%A6%E5%8F%B7%E5%92%8C%E8%90%A5%E5%88%A9%E6%80%A7-chatgpt-%E9%95%9C%E5%83%8F"><strong><em>!IMPORTANT!</em></strong> 为什么不推荐购买 OpenAI 账号和营利性 ChatGPT 镜像</a>
+<ul>
+<li><a href="#%E5%B0%81%E5%8F%B7%E9%A3%8E%E9%99%A9">封号风险</a></li>
+<li><a href="#%E6%9A%B4%E5%88%A9%E8%A1%8C%E4%B8%9A">暴利行业</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BD%91%E7%BB%9C%E7%8E%AF%E5%A2%83">网络环境</a></li>
+<li><a href="#%E6%9C%89%E6%95%88%E9%82%AE%E7%AE%B1">有效邮箱</a></li>
+<li><a href="#%E6%B5%B7%E5%A4%96%E7%94%B5%E8%AF%9D">海外电话</a></li>
+<li><a href="#%E6%B3%A8%E5%86%8C%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%8F%AF%E8%83%BD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98">注册过程中可能遇到的问题</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8-chatgpt">使用 ChatGPT</a></li>
+<li><a href="#optional-chatgpt-plus"><em><strong>Optional*</strong></em> ChatGPT Plus</a></li>
+</ul>
+</li>
+<li><a href="#%E5%88%9D%E9%98%B6new-bing">初阶：New Bing</a></li>
+<li><a href="#%E5%88%9D%E9%98%B6github-copilot">初阶：GitHub Copilot</a>
+<ul>
+<li><a href="#host-%E4%BB%A3%E7%90%86%E5%BC%95%E5%8F%91%E7%9A%84%E9%94%99%E8%AF%AF">Host 代理引发的错误</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%AD%E9%98%B6%E9%80%9A%E8%BF%87-api-%E8%AE%BF%E9%97%AE-openai-%E6%9C%8D%E5%8A%A1">中阶：通过 API 访问 OpenAI 服务</a>
+<ul>
+<li><a href="#%E4%BB%A3%E8%A1%A8%E6%80%A7-api-%E5%BA%94%E7%94%A8-preview">代表性 API 应用 Preview</a>
+<ul>
+<li><a href="#chatgpt-%E5%AD%A6%E6%9C%AF%E4%BC%98%E5%8C%96">ChatGPT 学术优化</a></li>
+<li><a href="#chatgpt---genie-ai">ChatGPT - Genie AI</a></li>
+<li><a href="#interactive-simulacra-of-human-behavior">Interactive Simulacra of Human Behavior</a></li>
+</ul>
+</li>
+<li><a href="#%E7%94%B3%E8%AF%B7-api-key">申请 API key</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8-openai-api">使用 OpenAI API</a>
+<ul>
+<li><a href="#vscode-chatgpt-genie">VScode: ChatGPT-Genie</a></li>
+<li><a href="#android-alissu-gpt">Android: Alissu GPT</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E9%AB%98%E9%98%B6%E9%83%A8%E7%BD%B2%E5%A2%99%E5%86%85%E5%8F%AF%E7%94%A8%E7%9A%84-chatgpt-%E9%95%9C%E5%83%8F">高阶：部署墙内可用的 ChatGPT “镜像”</a>
+<ul>
+<li><a href="#%E5%89%8D%E7%BD%AE%E6%9D%A1%E4%BB%B6">前置条件</a></li>
+<li><a href="#%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2">一键部署</a></li>
+<li><a href="#%E6%B7%BB%E5%8A%A0-api-key">添加 API key</a></li>
+<li><a href="#optional-%E6%9B%B4%E6%8D%A2%E6%A8%A1%E5%9E%8B%E5%92%8C-base-url"><strong><em>Optional*</em></strong> 更换模型和 Base URL</a></li>
+</ul>
+</li>
+<li><a href="#%E9%AB%98%E9%98%B6azure-openai">高阶：Azure OpenAI</a>
+<ul>
+<li><a href="#azure-%E5%AD%A6%E7%94%9F%E8%AE%A4%E8%AF%81">Azure 学生认证</a></li>
+<li><a href="#%E7%94%B3%E8%AF%B7-azure-gpt-35-api">申请 Azure GPT-3.5 API</a></li>
+<li><a href="#%E9%83%A8%E7%BD%B2-azure-openai-%E6%9C%8D%E5%8A%A1">部署 Azure OpenAI 服务</a></li>
+<li><a href="#%E9%83%A8%E7%BD%B2-azure-openai-%E6%A8%A1%E5%9E%8B">部署 Azure OpenAI 模型</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96-azure-openai-api-key">获取 Azure OpenAI API key</a></li>
+<li><a href="#%E7%94%A8-vscode-genie-%E8%B0%83%E7%94%A8-azure-openai-api">用 VScode Genie 调用 Azure OpenAI API</a></li>
+</ul>
+</li>
+<li><a href="#%E9%AB%98%E9%98%B6%E9%83%A8%E7%BD%B2%E5%9F%BA%E4%BA%8E-llm-%E7%9A%84%E8%81%8A%E5%A4%A9-bots">高阶：部署基于 LLM 的聊天 bots</a></li>
+<li><a href="#bonus-parts">Bonus Parts:</a>
+<ul>
+<li><a href="#%E5%BC%80%E5%8F%91%E5%9F%BA%E4%BA%8E-llms-%E7%9A%84%E5%BA%94%E7%94%A8">开发基于 LLMs 的应用</a></li>
+<li><a href="#github-%E5%AD%A6%E7%94%9F%E8%AE%A4%E8%AF%81%E6%8C%87%E5%8D%97">GitHub 学生认证指南</a></li>
+<li><a href="#%E7%94%A8%E5%A4%A7%E9%99%86-86-%E6%89%8B%E6%9C%BA%E5%8F%B7%E6%B3%A8%E5%86%8C-gmail">用大陆 +86 手机号注册 Gmail</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="%E5%89%8D%E8%A8%80">前言</h1>
+<p>标题有点水，但请相信我，文章内容足够硬核，流程足够详细，绝对值得一看。本文将分几个部分向墙内用户介绍 OpenAI LLMs 服务：</p>
+<ul>
+<li>前言中将介绍国内用户使用 OpenAI 产品的几个须知</li>
+<li>初阶难度将介绍三个标志性的 ai 产品</li>
+<li>中阶难度将举例介绍使用 OpenAI API 的两种方式</li>
+<li>高阶难度将介绍两种免翻墙使用 OpenAI API 的方法</li>
+<li>Bonus parts 则是一些与正文内容关联略小但能帮助理解的部分</li>
+</ul>
+<p>希望能帮到各位，<s>点赞关注收藏不迷路</s></p>
+<p><strong><em>To be continued...</em></strong> 意味着笔者暂时还没想好这块怎么写……如果你有什么特别想看的部分或提建议或也欢迎在评论区提 issue 或 pull request</p>
+<h2 id="gfw-%E4%B8%8E-closeai%E5%A2%99%E5%86%85%E4%B9%8B%E7%97%9B">GFW 与 CloseAI，墙内之痛</h2>
+<p>先放几张国内用户一眼血压升高的图片：</p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/can not reach.png" alt="can not reach page"><br>
+<em>Can not Reach Page. 你被 GFW 拦住了。这里不作赘述</em> <strong><em>so fuck you GFW : )</em></strong></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/checking browser.png" alt="checking browser"><br>
+<em>Checking Browser. 验证你是否为爬虫，或者从浏览器 cookies 等蛛丝马迹中判断你是否在不支持 OpenAI 服务的地区</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/denied.png" alt="access denied"><br>
+<em>Access Denied</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/country.png" alt="Unavailable in Your Country"><br>
+<em>Service Unavailable in Your Country</em> <strong><em>so fuck you CloseAI : )</em></strong></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/api failed.png" alt="API failed"><br>
+<em>gpt API 网络请求失败</em></p>
+<p>（已过滤），你就很难通过 CloseAI 堪比 Netflix 的 ip 封锁；没有基本的网络常识，你也很难绕过 CloseAI 额外的浏览器检测。因此，不翻墙使用 gpt 服务变得吃香，部分商家利用信息差向不提供 OpenAI 服务的地区高价兜售 OpenAI 服务，令人作呕，这是我写这篇文章的原因之一</p>
+<h2 id="%E4%BA%86%E8%A7%A3-openai-llms">了解 OpenAI LLMs</h2>
+<p>这部分我大概想介绍下不同 LLM 之间的定价和擅长工作等区别
+<strong><em>To be continued...</em></strong></p>
+<p>Reference: <a href="https://platform.OpenAI.com/docs/models">Models - OpenAI API Documentation</a></p>
+<h2 id="princing">Princing</h2>
+<p><strong><em>To be continued...</em></strong></p>
+<p>Reference: <a href="https://OpenAI.com/pricing">Pricing -OpenAI API Documentation</a></p>
+<h1 id="%E5%88%9D%E9%98%B6chatgpt">初阶：ChatGPT</h1>
+<h2 id="important-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E6%8E%A8%E8%8D%90%E8%B4%AD%E4%B9%B0-openai-%E8%B4%A6%E5%8F%B7%E5%92%8C%E8%90%A5%E5%88%A9%E6%80%A7-chatgpt-%E9%95%9C%E5%83%8F"><strong><em>!IMPORTANT!</em></strong> 为什么不推荐购买 OpenAI 账号和营利性 ChatGPT 镜像</h2>
+<h3 id="%E5%B0%81%E5%8F%B7%E9%A3%8E%E9%99%A9">封号风险</h3>
+<p>网购 OpenAI 账号（包括代注册）往往来源于批量注册，一个 ip 地址注册多个 OpenAI 账号的后果就是被“秋后算账”封号，商家一跑了之，毫无商业诚信可言</p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/banned.png" alt="account banned"><br>
+<em>你号没了</em></p>
+<h3 id="%E6%9A%B4%E5%88%A9%E8%A1%8C%E4%B8%9A">暴利行业</h3>
+<p>无论是兜售 OpenAI 账号还是出售“问答次数”等服务都是暴利！根据<a href="http://t.csdn.cn/3Okc8">《GPT-4 API 接口调用及价格分析》</a>，让价格高昂的 GPT-4 回复 2000 多字通常只需要 1 人民币左右，而更常用的 ChatGPT 只要 4 分钱不到！信息差使得国内营利性 ChatGPT 镜像完全成了割墙内人韭菜的暴利灰产</p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/price.png" alt="price"><br>
+<em>直观地看出调用 GPT 接口的定价</em></p>
+<h2 id="%E7%BD%91%E7%BB%9C%E7%8E%AF%E5%A2%83">网络环境</h2>
+<ul>
+<li>
+<p>已过滤</p>
+<p>已过滤</p>
+</li>
+<li>
+<p>值得注意的是，CloseAI 封禁节点的力度相当之大，因此机场出现无法解锁 CloseAI 服务而 <a href="#access-denied-%7C%7C-Unavailable-in-Your-Country">Access Denied</a> 的情况非常常见</p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/GlaDOS failed.png" alt="GlaDOS unlock failed"><br>
+<em>GlaDOS 解锁 OpenAI 是不稳定的</em></p>
+</li>
+<li>
+<p>由于机场跑路的情况非常常见，因此最好常备多个机场，能买不限时流量计费就买流量，不是看流媒体通常速度不要紧。可以在这里查看机场解锁 OpenAI 情况 <a href="https://t.me/DuyaoSS">DuyaoSS 的 Telegram 频道</a></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/airport test.png" alt="airports example"><br>
+<em>Access Denied 99% 是节点问题</em></p>
+</li>
+<li>
+<p>浏览器环境对你能否进入 OpenAI 网站至关重要，当你切换了多个节点或更换机场后仍然遇到 <a href="#access-denied-%7C%7C-Unavailable-in-Your-Country">Access Denied 错误</a> 时，可以试着清除浏览器 cookies、更换浏览器或使用无痕浏览</p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/clear cookies.png" alt="clear cookies"><br>
+<em>以 Edge 为例，在浏览器地址栏输入 edge://settings/clearBrowserData， 选中并清除浏览器 cookies</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/inprivate.png" alt="inprivate"><br>
+<em><code>Crtl</code>+<code>Shift</code>+<code>N</code>，无痕浏览模式不会保存你的 cookies</em></p>
+</li>
+</ul>
+<h2 id="%E6%9C%89%E6%95%88%E9%82%AE%E7%AE%B1">有效邮箱</h2>
+<p>某月某日以来，OpenAI 先后禁止了 163mail、qqmail 甚至是 outlook 邮箱（即微软账号，CloseAI 急起来连它爹都封）的注册，因此你需要一个有效的邮箱来注册 OpenAI 账号，通常推荐用 gmail 注册（edu.cn 邮箱我没试过，听说似乎也可行）</p>
+<p><a href="#bonus%E5%A6%82%E4%BD%95%E7%94%A8%E5%A4%A7%E9%99%86-86-%E6%89%8B%E6%9C%BA%E5%8F%B7%E6%B3%A8%E5%86%8C-gmail">《如何使用 +86 大陆手机号注册 Gmail》</a></p>
+<h2 id="%E6%B5%B7%E5%A4%96%E7%94%B5%E8%AF%9D">海外电话</h2>
+<p>如果你没有实体海外电话，推荐使用 <a href="https://sms-activate.org/">sms-activate.org</a> 购买虚拟电话验证服务（俗称接码）</p>
+<ol>
+<li>
+<p>注册 sms-activate.org 账号并充值一点钱（一般最低充值金额就够了）</p>
+</li>
+<li>
+<p>根据你节点所在地区购买 OpenAI 虚拟电话接码服务（上次我用美国手机号被 CloseAI 发现是虚拟手机号 ban 了，改用英国的手机号才成功）</p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/sms1.png" alt="sms step1"><br>
+<em>找到 OpenAI</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/sms2.png" alt="sms step2"><br>
+<em>比较推荐英国地区，价格实惠</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/sms3.png" alt="sms step3"><br>
+<em>别担心，20 分钟未收到短信或手动取消服务都会自动退款 👍</em></p>
+</li>
+<li>
+<p>复制手机号，去 <a href="https://platform.OpenAI.com">OpenAI 官网</a> 一步步注册。将 sms-activate.org 提供的虚拟手机号复制到 OpenAI 的电话号码输入框中</p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/sms4.png" alt="sms step4"><br>
+<em>记得删除国家前缀（如 +44 英国）</em></p>
+</li>
+<li>
+<p>注册成功！开始使用</p>
+</li>
+</ol>
+<h2 id="%E6%B3%A8%E5%86%8C%E8%BF%87%E7%A8%8B%E4%B8%AD%E5%8F%AF%E8%83%BD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98">注册过程中可能遇到的问题</h2>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/signup problem.png" alt="sign up problem1"><br>
+<em>账号被怀疑参与非法行为。代理节点和你的手机号需处于同一国家</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/virtual phone.png" alt="sign up problem2"><br>
+<em>你的手机号被鉴定为虚拟手机号。退款（未收到验证码可以直接点击“X”取消），换个国家的手机号</em></p>
+<p><strong><em>To be continued</em></strong></p>
+<p>如果出现其他问题，可以参考<a href="https://sms-activate.org/blog/how-to-sign-up-for-ChatGPT">《你注册 OpenAI 时为什么会失败》</a></p>
+<h2 id="%E4%BD%BF%E7%94%A8-chatgpt">使用 ChatGPT</h2>
+<p><a href="https://chat.OpenAI.com/">ChatGPT playground</a> 是一个不需要 API 接口就可以直接使用的 OpenAI 官方产品，它提供了一个简单的聊天界面</p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/chatgpt register.png" alt="ChatGPT register"><br>
+<em>高情商 chatbot 👍</em></p>
+<h2 id="optional-chatgpt-plus"><em><strong>Optional*</strong></em> ChatGPT Plus</h2>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/chatgpt plus.png" alt="ChatGPT plus"><br>
+<em>ChatGPT 和其他使用 API 的模型不同，前者属于一个成熟的产品，而后者则是主要面向开发者的服务。因此其付费版的价格也相对昂贵（得多）</em></p>
+<p>ChatGPT Plus 是 OpenAI 官方提供的付费服务，它提供了：</p>
+<ol>
+<li>更快的回应速度（相较于 ChatGPT，不过还是绝对慢于 Azure OpenAI API）</li>
+<li>拥堵时仍能使用（不会被 Rate Limited）</li>
+<li>GPT-4 免费试用（每 4h 100 次）</li>
+</ol>
+<p>不过其实我个人并不推荐墙内用户购买 ChatGPT Plus，因为：</p>
+<ol>
+<li>价格昂贵（每月 20 USD，拼车还容易遇到各种问题）</li>
+<li>需要海外信用卡（麻烦，虚拟信用卡还容易多交钱）</li>
+<li>墙内访问麻烦（要过浏览器验证）</li>
+</ol>
+<p><strong><em>To be continued...</em></strong></p>
+<h1 id="%E5%88%9D%E9%98%B6new-bing">初阶：New Bing</h1>
+<ol>
+<li>
+<p>首先你需要一个微软账号，用大家的 edu 邮箱或者自己私人邮箱就行，不作赘述</p>
+</li>
+<li>
+<p>在官网 <a href="https://www.microsoftedgeinsider.com/zh-cn/download/dev">下载 Edge dev</a> 并安装</p>
+</li>
+<li>
+<p>科学上网后打开 Edge dev，点击右边上角必应图标，会弹出申请按钮，登录微软账号加入等待列表</p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/new bing.webp" alt="New Bing ico"><br>
+<em>如果不翻墙访问的话这个 icon 不会显示 New Bing</em></p>
+</li>
+<li>
+<p>申请成功后会收到邮件</p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/nb waitlist.png" alt="in waitlist"><br>
+<em>已经在 waitlist 里了，但通过时间差别挺大，从一天到半个月不等</em></p>
+</li>
+<li>
+<p>等待微软通过后，你会收到欢迎邮件，你就可以使用新必应。等候时间因人而异（奇怪的是笔者从未受到过欢迎邮件，资格倒确实通过了）</p>
+</li>
+<li>
+<p>资格通过后，你不需要 Edge dev 而只需要发布版 Edge 就可以愉快使用 New Bing（Edge dev 的圆角界面是哪个天才想出来的，太恶心了！）</p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/nb chat.png" alt="chat with New Bing"><br>
+<em>国内访问 New Bing 比 <a href="https://chat.openai.com/">ChatGPT playground</a> 方便多了</em></p>
+</li>
+</ol>
+<h1 id="%E5%88%9D%E9%98%B6github-copilot">初阶：GitHub Copilot</h1>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/github copilot.png" alt="GitHub Copilot"><br>
+<em>GitHub Copilot shares recommendations based on the project's context and style conventions. Quickly cycle through lines of code, complete function suggestions, and decide which to accept, reject, or edit</em></p>
+<p>以 VScode 为例，在日常文字/代码工作中使用 GitHub Copilot 与其 experimental features <em><strong>Optional*</strong></em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/github edu.png" alt="GitHub edu"><br>
+<em>首先你需要一个已 <a href="#GitHub-%E5%AD%A6%E7%94%9F%E8%AE%A4%E8%AF%81%E6%8C%87%E5%8D%97">通过 GitHub 学生认证</a> 的 GitHub 账号（愿意直接掏钱买的大佬除外）</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/vscode.png" alt="VScode"><br>
+<em><a href="https://code.visualstudio.com/Download">下载 VScode</a>（当然其他支持 Copilot 的 IDE 也行）</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/copilot.png" alt="VScode Copilot"><br>
+<em>安装 GitHub Copilot 插件和 experienmental features（可能会有一些简单的验证步骤）</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/using copilot.png" alt="using Copilot"><br>
+<em>开始使用 Copilot 吧 🎉</em></p>
+<h2 id="host-%E4%BB%A3%E7%90%86%E5%BC%95%E5%8F%91%E7%9A%84%E9%94%99%E8%AF%AF">Host 代理引发的错误</h2>
+<p>某些 host 代理比如 Watt Toolkit 的 GitHub API 加速功能和 Copilot 冲突，使用时需将其关闭</p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/copilot problem.png" alt="problem"><br>
+<em>Watt Toolkit host 代理加速 GitHub 引发的错误</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/copilot api.png" alt="conflict"><br>
+<em>取消勾选该项即可</em></p>
+<h1 id="%E4%B8%AD%E9%98%B6%E9%80%9A%E8%BF%87-api-%E8%AE%BF%E9%97%AE-openai-%E6%9C%8D%E5%8A%A1">中阶：通过 API 访问 OpenAI 服务</h1>
+<p>API 是几乎所有基于 OpenAI 服务的应用程序的基础，该部分将举例说明使用 gpt API 的情景和方法。该部分要求你已经拥有一个 OpenAI 账号</p>
+<h2 id="%E4%BB%A3%E8%A1%A8%E6%80%A7-api-%E5%BA%94%E7%94%A8-preview">代表性 API 应用 Preview</h2>
+<p>先来看看几个 API 应用的效果：</p>
+<h3 id="chatgpt-%E5%AD%A6%E6%9C%AF%E4%BC%98%E5%8C%96">ChatGPT 学术优化</h3>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/chatgpt academic.gif" alt="ChatGPT academic"><br>
+<em>其实它还支持除 ChatGPT 以外的多种 LLM（大型语言模型）</em></p>
+<p><a href="https://sha1rholder.blob.core.windows.net/openaiblog/https://github.com/binary-husky/ChatGPT_academic">ChatGPT-academic</a> 是科研工作专用 ChatGPT 拓展，特别优化学术 Paper 润色体验，支持自定义快捷按钮，支持自定义函数插件，支持 markdown 代码块表格显示，Tex 公式双显示，有 Python/C++项目剖析/自译解功能，PDF/LaTex 论文翻译/总结功能，兼容 ChatGLM 等本地模型</p>
+<h3 id="chatgpt---genie-ai">ChatGPT - Genie AI</h3>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/genie gui.png" alt="ChatGPT - Genie AI"><br>
+<em><a href="https://sha1rholder.blob.core.windows.net/openaiblog/api.mp4">获取效果预览视频.mp4</a></em></p>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=genieai.ChatGPT-vscode">ChatGPT - Genie AI</a> is Your best AI pair programmer. Save conversations and continue any time. A Visual Studio Code - ChatGPT Integration. Supports GPT-4, GPT3.5, GPT3 and Codex models. Create new files, view diffs with one click; your Copilot to learn code, add tests, find bugs and more</p>
+<h3 id="interactive-simulacra-of-human-behavior">Interactive Simulacra of Human Behavior</h3>
+<blockquote>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/chatgpt town.jpg" alt="game demo"><br>
+Generative agents create believable simulacra of human behavior for interactive applications</p>
+</blockquote>
+<p>Park, J.S., O'Brien, J.C., Cai, C.J., Morris, M.R., Liang, P. and Bernstein, M.S., 2023. Generative Agents: Interactive Simulacra of Human Behavior. arXiv preprint arXiv:2304.03442.</p>
+<p><a href="https://arxiv.org/abs/2304.03442">view on arxiv.org</a>
+<a href="ChatGPT%20town.pdf">view pdf</a>
+<a href="https://reverie.herokuapp.com/arXiv_Demo/">play game demo</a></p>
+<h2 id="%E7%94%B3%E8%AF%B7-api-key">申请 API key</h2>
+<p>3 月前注册的 OpenAI 账户一般有 18 美元免费额度，有效期至 6 月 30 日；而 3 月 1 日之后注册的账号免费额度只有 5 美元，有效期到 7 月，注册时间往后推移，有效期也会向后推移。这些钱将是你接下来使用基于 API 的 OpenAI 服务的基础（有海外信用卡的大佬除外），你将开始使用 API 来访问 OpenAI 服务。从创建 API key 开始</p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/create api.png" alt="create API key"><br>
+<em>在 OpenAI 官网 <a href="https://platform.openai.com/account/api-keys">创建和管理 API key</a></em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/api view.png" alt="view API"><br>
+<em>复制 API key</em> <strong><em>注意：请妥善保存你的 API key，因为你将再也看不见它</em></strong></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/api usage.png" alt="API usage">
+<em>你可以在 <a href="https://platform.openai.com/account/usage">account &gt; usage</a> 处管理你的 API key，免费账户的额度会自动过期</em></p>
+<h2 id="%E4%BD%BF%E7%94%A8-openai-api">使用 OpenAI API</h2>
+<blockquote>
+<p>你可以用任何语言通过 HTTP 请求与 API 进行交互，使用我们的官方 Python 接口、官方 Node.js 库或由社区维护的库
+https://platform.OpenAI.com/docs/API-reference</p>
+</blockquote>
+<h3 id="vscode-chatgpt-genie">VScode: ChatGPT-Genie</h3>
+<p>该部分面向使用 VScode 的用户，以 <a href="https://marketplace.visualstudio.com/items?itemName=genieai.ChatGPT-vscode">VScode Genie AI 插件</a> 为例介绍如何使用 OpenAI API</p>
+<ol>
+<li>
+<p>安装 VScode 插件</p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/genie.png" alt="find genie"><br>
+<em>找到并安装 ChatGPT - Genie AI 插件，成功后会在左侧显示 Genie 图标</em></p>
+</li>
+<li>
+<p>输入 API key</p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/change api.png" alt="change API"><br>
+<em>在这里输入你的以 sk-开头的 API key</em></p>
+</li>
+<li>
+<p><em><strong>Optional*</strong></em> 优化插件设置</p>
+<p>找到 VScode 设置文件 setting.json（通常在 C:\Users\用户名\AppData\Roaming\Code\User\settings.json），在最外层的花括号中输入以下设置或按需在 GUI 中修改 Genie 插件设置</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// 自定义对话精灵名称（你最好不认识她它）</span>
+<span class="hljs-string">"genieai.personalizedName"</span>: <span class="hljs-string">"Neuro-sama"</span>,
+
+<span class="hljs-comment">// 禁用不常用功能</span>
+<span class="hljs-string">"genieai.promptPrefix.completeCode-enabled"</span>: <span class="hljs-literal">false</span>,
+<span class="hljs-string">"genieai.promptPrefix.addComments-enabled"</span>: <span class="hljs-literal">false</span>,
+<span class="hljs-string">"genieai.promptPrefix.addTests-enabled"</span>: <span class="hljs-literal">false</span>,
+<span class="hljs-string">"genieai.promptPrefix.findProblems-enabled"</span>: <span class="hljs-literal">false</span>,
+
+<span class="hljs-comment">// 开启自定义前缀（我定义了中英互译）</span>
+<span class="hljs-string">"genieai.promptPrefix.customPrompt1-enabled"</span>: <span class="hljs-literal">true</span>,
+<span class="hljs-string">"genieai.promptPrefix.customPrompt1"</span>: <span class="hljs-string">"Translate to Chinese"</span>,
+<span class="hljs-string">"genieai.promptPrefix.customPrompt2-enabled"</span>: <span class="hljs-literal">true</span>,
+<span class="hljs-string">"genieai.promptPrefix.customPrompt2"</span>: <span class="hljs-string">"Translate to English"</span>,
+
+<span class="hljs-comment">// 允许储存对话记录</span>
+<span class="hljs-string">"genieai.enableConversationHistory"</span>: <span class="hljs-literal">true</span>,
+</div></code></pre>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/edit shortcuts.png" alt="edit shortcuts"><br>
+<em>进入 VScode 快捷键编辑 GUI</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/genie shortcuts.png" alt="edit genie shortcuts"><br>
+<em>搜索 genie，修改你想要的快捷键。以上是我个人的绑键策略</em></p>
+</li>
+<li>
+<p>开始使用</p>
+<p><a href="#%E7%BD%91%E7%BB%9C%E7%8E%AF%E5%A2%83">配置科学上网环境</a> ，但使用 API 时无需担心浏览器环境！</p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/genie gui.png" alt="genie"><br>
+<em><a href="https://GitHub.com/ai-genie/ChatGPT-vscode">给项目点个 Star</a></em></p>
+</li>
+</ol>
+<h3 id="android-alissu-gpt">Android: Alissu GPT</h3>
+<p><a href="https://play.google.com/store/apps/details?id=com.ekmen.aiapp&amp;hl=zh-cn">Alissu: Chat with AI</a> 是 Google Play 中最受欢迎，最简洁，最方便的基于 OpenAI API 的安卓 gpt 应用之一。该项目允许你使用公共 API key 进行少量临时的查询，但你也可以上传自己的 API key（据其团队称不会云储存用户的 API key，但由于其似乎并非开源项目因此对 API 保密有特别高需求的同学应谨慎对待）来无限制使用 Davinci 等更昂贵的模型，获取更多的查询次数并大幅减少广告</p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/alissu.png" alt="Alissu GPT"><br>
+<em>在你的安卓设备上 <a href="https://play.google.com/store/apps/details?id=com.ekmen.aiapp&amp;hl=zh-cn">安装 Alissu</a>。如果你没有 google play，也可以 <a href="https://sha1rholder.blob.core.windows.net/openaiblog/cfa-2.5.12-premium-universal-release.apk">从我的 Azure 容器中下载</a></em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/alissu key.jpg" alt="Alissu GPT"><br>
+<em>点击右上角 ≡ 符号 Add Key，添加你的 Optnai API key（暂不支持 Azure OpenAI API）并修改你想用的模型（推荐 Turbo）</em></p>
+<p>相关教程：<a href="#%E5%9C%A8%E5%AE%89%E5%8D%93%E6%89%8B%E6%9C%BA%E4%B8%8A%E9%85%8D%E7%BD%AE%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E7%8E%AF%E5%A2%83%E5%B9%B6%E5%AE%89%E8%A3%85%E8%B0%B7%E6%AD%8C%E6%9C%8D%E5%8A%A1">在安卓手机上配置科学上网环境并安装谷歌服务</a></p>
+<h1 id="%E9%AB%98%E9%98%B6%E9%83%A8%E7%BD%B2%E5%A2%99%E5%86%85%E5%8F%AF%E7%94%A8%E7%9A%84-chatgpt-%E9%95%9C%E5%83%8F">高阶：部署墙内可用的 ChatGPT “镜像”</h1>
+<p>然而，每次总需要翻墙才能使用 gpt，这样的体验实在是太糟糕了。本文将介绍如何用 Netlify 托管部署你自己的 ChatGPT “镜像”，使你可以无需翻墙使用 gpt API，还可以让你不会翻墙的家人们随时使用 OpenAI 服务。GitHub 开源项目 <a href="https://GitHub.com/ddiu8081/ChatGPT-demo">ChatGPT-demo</a> 已经为你做好了一个 ChatGPT 镜像网站，万事俱备，你只需要部署+上传自己的 API key 即可。此部分默认你拥有基础的网络常识，初步掌握使用 gpt API 的方法，并拥有一个 GitHub 账号。<s>就算啥都没有也不要紧反正简单得很</s> (●'◡'●)╯︵ ┻━┻</p>
+<p>先上用例：https://glittery-zabaione-7c5781.netlify.app/<br>
+<img src="https://sha1rholder.blob.core.windows.net/openaiblog/chatgpt demo.png" alt="ChatGPT demo"><br>
+<em>我自己部署的公益项目，大家随便用</em></p>
+<h2 id="%E5%89%8D%E7%BD%AE%E6%9D%A1%E4%BB%B6">前置条件</h2>
+<p>确保自己拥有一个可用的 GPT-3.5-Turbo API</p>
+<p><a href="https://app.netlify.com/">Netlify</a> 是一家美国云计算公司，可以为用户提供静态网页托管服务</p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/netlify signup.png" alt="Netlify signup"><br>
+<em>用 GitHub 账号注册 Netlify，如果 GitHub 打不开可以用 <a href="https://steampp.net/">Watt Toolkit</a> 加速</em></p>
+<h2 id="%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2">一键部署</h2>
+<p>克隆开源 ChatGPT “镜像” <a href="https://GitHub.com/ddiu8081/ChatGPT-demo">ChatGPT-demo</a> 到你的 GitHub repository 并部署服务</p>
+<p><strong><a href="https://app.netlify.com/start/deploy?repository=https://GitHub.com/ddiu8081/ChatGPT-demo#OpenAI_API_KEY=&amp;HTTPS_PROXY=&amp;OpenAI_API_BASE_URL=&amp;HEAD_SCRIPTS=&amp;SECRET_KEY=&amp;OpenAI_API_MODEL=&amp;SITE_PASSWORD=">一键克隆+部署</a></strong></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/netlify1.png" alt="Netlify step1"><br>
+<em>链接到你的 GitHub</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/netlify2.png" alt="Netlify step2"><br>
+<em>给你的 repository 取个名</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/netlify3.png" alt="Netlify step3"><br>
+<em>等待部署完成（约 2 分钟）</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/netlify4.png" alt="Netlify step4"><br>
+<em>部署成功！</em></p>
+<h2 id="%E6%B7%BB%E5%8A%A0-api-key">添加 API key</h2>
+<p>我们还需要为网站添加 API key 来驱动它</p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/netlify5.png" alt="Netlify step5"><br>
+<em>打开部署设置</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/netlify6.png" alt="Netlify step6"><br>
+<em>打开环境变量界面</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/netlify7.png" alt="Netlify step7"><br>
+<em>找到并修改 OpenAI_API_KEY 变量</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/netlify8.png" alt="Netlify step8"><br>
+<em>输入你自己的 API key 并保存</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/netlify9.png" alt="Netlify step9"><br>
+<em>恭喜你现在可以随时随地无需翻墙访问你自己的 ChatGPT “镜像”了</em></p>
+<h2 id="optional-%E6%9B%B4%E6%8D%A2%E6%A8%A1%E5%9E%8B%E5%92%8C-base-url"><strong><em>Optional*</em></strong> 更换模型和 Base URL</h2>
+<p>本部分需要你提前掌握下一章节 Azure OpenAI 的内容，如果你不想了解，可以跳过这一部分。该部分将介绍如何更换 ChatGPT “镜像” 的模型和 Base URL，使你可以使用任何你想要的模型，或更换为 Azure OpenAI API</p>
+<p><strong><em>To be continued...</em></strong></p>
+<h1 id="%E9%AB%98%E9%98%B6azure-openai">高阶：Azure OpenAI</h1>
+<p>现在我们再要用 GPT-3.5 已经不需要翻墙了，但可怜的 <s>Neuro-sama</s> ChatGPT Genie 还在墙内，使用起来不仅得翻墙，速度还慢，又经常出岔子。因此，我们隆重推出：<strong>Macrohard Azure OpenAI</strong>。它不仅墙内还直接可用，速度还比 OpenAI 的 API 快很多，甚至还有对学生每年整整 100 美刀的免费额度，<s>甚至对于大型企业而言还大大提高了数据安全性和可控性（但这个你们应该不 care）</s>！</p>
+<p><strong>Let's start</strong></p>
+<p>该部分以使用 Azure OpenAI API 取代原生 OpenAI API 使用 VScode Genie 插件为例介绍如何使用 Azure OpenAI API。此部分需要你拥有一定网络知识，掌握使用 gpt API 的方法，并拥有一个已通过 <a href="#bonusGitHub-%E5%AD%A6%E7%94%9F%E8%AE%A4%E8%AF%81%E6%8C%87%E5%8D%97">GitHub 学生认证</a> 的 GitHub 账号</p>
+<h2 id="azure-%E5%AD%A6%E7%94%9F%E8%AE%A4%E8%AF%81">Azure 学生认证</h2>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/azure stu.png" alt="Azure student"><br>
+<em>完成 <a href="https://Azure.microsoft.com/zh-cn/free/students/">Azure 学生认证</a></em> <strong><em>前提是先通过 GitHub 学生认证！</em></strong></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/azure stu success.png" alt="Welcome to Azure for Students"><br>
+<em>申请通过后会受到一封确认邮件，其中包含你的 Subscription ID</em></p>
+<h2 id="%E7%94%B3%E8%AF%B7-azure-gpt-35-api">申请 Azure GPT-3.5 API</h2>
+<p>如实填写 <a href="https://aka.ms/oaiapply">Azure GPT-3.5 申请表</a>，以下是几个需要稍微注意的地方：</p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/azure q3.png" alt="q3"><br>
+<em>有几个就填几个（通常是一个）</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/azure q4.png" alt="q4"><br>
+<em>把你邮件里的 Subscription ID 填进去</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/azure q5.png" alt="q5"><br>
+<em>用你高贵的 EDUmail 而不是私人邮箱</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/azure q6.png" alt="q6"><br>
+<em>你浙</em></p>
+<p>后面按需填就行，可惜我没法重新给你们变出一张表单提交成功的图来</p>
+<h2 id="%E9%83%A8%E7%BD%B2-azure-openai-%E6%9C%8D%E5%8A%A1">部署 Azure OpenAI 服务</h2>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/azure create.png" alt="create service"><br>
+<em>进入 <a href="https://portal.Azure.com/#view/Microsoft_Azure_ProjectOxford/CognitiveServicesHub/~/OpenAI">Azure OpenAI dashboard</a> 创建 OpenAI 服务</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/azure temp.png" alt="domain name failed"><br>
+<em>必须搞一个新域名，和 cc89 id 不能重复一个道理</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/azure domain name.png" alt="domain name success"><br>
+<em>按照这样填写（Region 随手选一个，Domain Name 当然没必要这么长，Pricing tier 你没得选）</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/azure network.png" alt="network"><br>
+<em>懂得都懂没啥好说的</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/azure submit.png" alt="submit"><br>
+<em>提交</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/azure deploying.png" alt="deployment"><br>
+<em>等候部署完成（约 5 分钟）</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/azure deployment.png" alt="deploying"><br>
+<em>部署成功！</em></p>
+<h2 id="%E9%83%A8%E7%BD%B2-azure-openai-%E6%A8%A1%E5%9E%8B">部署 Azure OpenAI 模型</h2>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/azure model create.png" alt="deploy model"><br>
+<em>待申请通过后（似乎没有邮件提醒，笔者 2 天内就通过了）创建模型，推荐 GPT-3.5-Turbo-0301（即 ChatGPT 的快照版本）。不同模型之间各有优劣，定价也天差地别。然而，谁能阻止你部署多个模型呢？</em></p>
+<h2 id="%E8%8E%B7%E5%8F%96-azure-openai-api-key">获取 Azure OpenAI API key</h2>
+<p>回到 <a href="https://sha1rholder.blob.core.windows.net/openaiblog/https://portal.Azure.com/#view/Microsoft_Azure_ProjectOxford/CognitiveServicesHub/~/OpenAI">Azure OpenAI dashboard</a></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/azure openai dashboard.png" alt="choose service"><br>
+<em>选择你创建的服务</em></p>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/azure key.png" alt="get keys"><br>
+<em>获取一个 Azure OpenAI key 和 Endpoint</em></p>
+<h2 id="%E7%94%A8-vscode-genie-%E8%B0%83%E7%94%A8-azure-openai-api">用 VScode Genie 调用 Azure OpenAI API</h2>
+<p><img src="https://sha1rholder.blob.core.windows.net/openaiblog/change api.png" alt="change API"><br>
+<em>在这里输入你的 Azure OpenAI API key，长度和 sk- 开头的原生 OpenAI API key 不一样</em></p>
+<p>打开 VScode 设置文件 setting.json（通常在 C:\Users\用户名\AppData\Roaming\Code\User\），在最外层的花括号中插入以下设置（需替换部分代码）或按需在 GUI 中修改 Genie 插件设置</p>
+<pre class="hljs"><code><div><span class="hljs-string">"genieai.OpenAI.model"</span>: <span class="hljs-string">"[模型名称]"</span>,
+<span class="hljs-string">"genieai.OpenAI.maxTokens"</span>: <span class="hljs-string">"[自定义最大 tokens]"</span>, <span class="hljs-comment">// 需小于最大 tokens</span>
+<span class="hljs-string">"genieai.OpenAI.APIBaseUrl"</span>: <span class="hljs-string">"[Endpoint]"</span>,
+<span class="hljs-string">"genieai.Azure.url"</span>: <span class="hljs-string">"[Endpoint]/OpenAI/deployments/[模型名称][/Optional：调用方法]/completions?API-version=[你的 API 版本]"</span>,
+</div></code></pre>
+<p><strong><em>Example:</em></strong></p>
+<pre class="hljs"><code><div><span class="hljs-comment">// 可以用注释来方便地替换多个预设</span>
+<span class="hljs-comment">/*
+"genieai.OpenAI.model": "text-davinci-003",
+"genieai.OpenAI.maxTokens": 3800, // 最大 tokens: 4097
+"genieai.OpenAI.APIBaseUrl": "https://sha1rholder-gpt.OpenAI.Azure.com",
+"genieai.Azure.url": "https://sha1rholder-gpt.OpenAI.Azure.com/OpenAI/deployments/tdavinci3/completions?API-version=2023-03-15-preview"
+*/</span>
+
+<span class="hljs-string">"genieai.OpenAI.model"</span>: <span class="hljs-string">"gpt-3.5-turbo-0301"</span>,
+<span class="hljs-string">"genieai.OpenAI.maxTokens"</span>: <span class="hljs-number">16000</span>, <span class="hljs-comment">// 最大 tokens: 16384</span>
+<span class="hljs-string">"genieai.OpenAI.APIBaseUrl"</span>: <span class="hljs-string">"https://sha1rholder-gpt.OpenAI.Azure.com"</span>,
+<span class="hljs-string">"genieai.Azure.url"</span>: <span class="hljs-string">"https://sha1rholder-gpt.OpenAI.Azure.com/OpenAI/deployments/gpt35/chat/completions?API-version=2023-03-15-preview"</span>
+</div></code></pre>
+<p><a href="https://learn.microsoft.com/en-us/Azure/cognitive-services/OpenAI/reference">Azure OpenAI 关于 API 版本、请求与返回的文档</a><br>
+<a href="https://platform.OpenAI.com/docs/API-reference/completions/create#completions/create-max_tokens">OpenAI 关于各 gpt 模型最大 tokens 数的文档</a></p>
+<p>完成设置后，无需翻墙就可以在 VScode 中使用 ChatGPT Genie 了</p>
+<h1 id="%E9%AB%98%E9%98%B6%E9%83%A8%E7%BD%B2%E5%9F%BA%E4%BA%8E-llm-%E7%9A%84%E8%81%8A%E5%A4%A9-bots">高阶：部署基于 LLM 的聊天 bots</h1>
+<p><strong><em>To be continued...</em></strong></p>
+<h1 id="bonus-parts">Bonus Parts:</h1>
+<h2 id="%E5%BC%80%E5%8F%91%E5%9F%BA%E4%BA%8E-llms-%E7%9A%84%E5%BA%94%E7%94%A8">开发基于 LLMs 的应用</h2>
+<p>该部分以使用 OpenAI sdk 编写简单的脚本为例，介绍如何使用 OpenAI sdk 开发基于 LLMs 的应用</p>
+<p><strong><em>To be continued...</em></strong></p>
+<h2 id="github-%E5%AD%A6%E7%94%9F%E8%AE%A4%E8%AF%81%E6%8C%87%E5%8D%97">GitHub 学生认证指南</h2>
+<p><strong><em>To be continued...</em></strong></p>
+<h2 id="%E7%94%A8%E5%A4%A7%E9%99%86-86-%E6%89%8B%E6%9C%BA%E5%8F%B7%E6%B3%A8%E5%86%8C-gmail">用大陆 +86 手机号注册 Gmail</h2>
+<p><strong><em>To be continued...</em></strong></p>
+<p><strong><em>To be continued...</em></strong></p>
+
+</body>
+</html>
