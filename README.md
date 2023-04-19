@@ -392,7 +392,7 @@ _用 GitHub 账号注册 Netlify，如果 GitHub 打不开可以用 [Watt Toolki
 
 克隆开源 ChatGPT “镜像” [ChatGPT-demo](https://GitHub.com/ddiu8081/ChatGPT-demo) 到你的 GitHub repository 并部署服务
 
-**[一键克隆+部署](https://app.netlify.com/start/deploy?repository=https://GitHub.com/ddiu8081/ChatGPT-demo#OpenAI_API_KEY=&HTTPS_PROXY=&OpenAI_API_BASE_URL=&HEAD_SCRIPTS=&SECRET_KEY=&OpenAI_API_MODEL=&SITE_PASSWORD=)**
+**[一键克隆+部署](https://app.netlify.com/start/deploy?repository=https://github.com/ddiu8081/chatgpt-demo#OPENAI_API_KEY=&HTTPS_PROXY=&OPENAI_API_BASE_URL=&HEAD_SCRIPTS=&SECRET_KEY=&OPENAI_API_MODEL=&SITE_PASSWORD=)**
 
 ![Netlify step1](/resource/netlify1.png)  
 _链接到你的 GitHub_
@@ -461,7 +461,7 @@ _把你邮件里的 Subscription ID 填进去_
 _用你高贵的 EDUmail 而不是私人邮箱_
 
 ![q6](/resource/azure%20q6.png)  
-_你浙_
+_写你学校_
 
 后面按需填就行，可惜我没法重新给你们变出一张表单提交成功的图来
 
