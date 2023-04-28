@@ -327,7 +327,7 @@ _你可以在 [account > usage](https://platform.openai.com/account/usage) 处�
    找到 VScode 设置文件 setting.json（通常在 C:\Users\用户名\AppData\Roaming\Code\User\settings.json），在最外层的花括号中输入以下设置或按需在 GUI 中修改 Genie 插件设置
 
    ```json
-   // 自定义对话精灵名称（你最好不认识她它）
+   // 自定义对话精灵名称（你最好不认识她）
    "genieai.personalizedName": "Neuro-sama",
 
    // 禁用不常用功能
@@ -521,17 +521,17 @@ _在这里输入你的 Azure OpenAI API key，长度和 sk- 开头的原生 Open
 
 ```json
 // 可以用注释来方便地替换多个预设
-/*
-"genieai.OpenAI.model": "text-davinci-003",
-"genieai.OpenAI.maxTokens": 3800, // 最大 tokens: 4097
-"genieai.OpenAI.APIBaseUrl": "https://sha1rholder-gpt.OpenAI.Azure.com",
-"genieai.Azure.url": "https://sha1rholder-gpt.OpenAI.Azure.com/OpenAI/deployments/tdavinci3/completions?API-version=2023-03-15-preview"
-*/
+"genieai.openai.apiBaseUrl": "https://sha1rholder-gpt.openai.azure.com",
 
-"genieai.OpenAI.model": "gpt-3.5-turbo-0301",
-"genieai.OpenAI.maxTokens": 16000, // 最大 tokens: 16384
-"genieai.OpenAI.APIBaseUrl": "https://sha1rholder-gpt.OpenAI.Azure.com",
-"genieai.Azure.url": "https://sha1rholder-gpt.OpenAI.Azure.com/OpenAI/deployments/gpt35/chat/completions?API-version=2023-03-15-preview"
+"genieai.openai.model": "gpt-3.5-turbo-0301",
+"genieai.openai.maxTokens": 7000, // < 8192
+"genieai.azure.url": "https://sha1rholder-gpt.openai.azure.com/openai/deployments/gpt35/chat/completions?api-version=2023-03-15-preview",
+"explorer.confirmDragAndDrop": false
+/*
+"genieai.openai.model": "text-davinci-003",
+"genieai.openai.maxTokens": 3800, // < 4097
+"genieai.azure.url": "https://sha1rholder-gpt.openai.azure.com/openai/deployments/tdavinci3/completions?api-version=2023-03-15-preview"
+*/
 ```
 
 [Azure OpenAI 关于 API 版本、请求与返回的文档](https://learn.microsoft.com/en-us/Azure/cognitive-services/OpenAI/reference)  
