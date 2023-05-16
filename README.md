@@ -95,21 +95,12 @@ OpenAI 基于 gpt 开发了多种大规模语言模型，其中目前最常用�
 
 # 初阶：ChatGPT
 
-## **_!IMPORTANT!_** 为什么不推荐购买 OpenAI 账号和营利性 ChatGPT 镜像
-
-### 封号风险
+## 为什么不推荐购买 OpenAI 账号
 
 网购 OpenAI 账号（包括代注册）往往来源于批量注册，一个 ip 地址注册多个 OpenAI 账号的后果就是被“秋后算账”封号，商家一跑了之，毫无商业诚信可言
 
 ![account banned](resource/banned.png)  
 _你号没了_
-
-### 暴利行业
-
-无论是兜售 OpenAI 账号还是出售“问答次数”等服务都是暴利！国内营利性 ChatGPT 镜像利用信息差完全成了割墙内人韭菜的黑产
-
-![price](resource/price.png)  
-_直观看出各语言模型接口的定价_
 
 ## 网络环境
 
@@ -125,7 +116,7 @@ _直观看出各语言模型接口的定价_
   ![airports example](resource/airport%20test.png)  
   _Access Denied 99% 是节点问题_
 
-- 浏览器环境对你能否进入 OpenAI 网站至关重要，当你切换了多个节点或更换机场后仍然遇到 [Access Denied 错误](#access-denied-||-Unavailable-in-Your-Country) 时，可以试着清除浏览器 cookies、更换浏览器或使用无痕浏览
+- 浏览器环境对你能否进入 OpenAI 网站至关重要，当你切换了多个节点或更换机场后仍然遇到 [Access Denied 错误](#access-denied-||-Unavailable-in-Your-Country) 时，可以试着清除浏览器 cookies 或使用无痕浏览
 
   ![clear cookies](resource/clear%20cookies.png)  
   _以 Edge 为例，在浏览器地址栏输入 edge://settings/clearBrowserData，选中并清除浏览器 cookies_
