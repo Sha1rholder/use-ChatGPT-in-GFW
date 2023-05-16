@@ -90,8 +90,8 @@ OpenAI 基于 gpt 开发了多种大规模语言模型，其中目前最常用�
 
 **Reference**
 
-[Models - OpenAI API Documentation](https://platform.OpenAI.com/docs/models)  
-[Pricing - OpenAI API Documentation](https://OpenAI.com/pricing)
+[Models - OpenAI API Documentation](https://platform.openai.com/docs/models)  
+[Pricing - OpenAI API Documentation](https://openai.com/pricing)
 
 # 初阶：ChatGPT
 
@@ -106,10 +106,10 @@ _你号没了_
 
 ### 暴利行业
 
-无论是兜售 OpenAI 账号还是出售“问答次数”等服务都是暴利！根据[《GPT-4 API 接口调用及价格分析》](http://t.csdn.cn/3Okc8)，让价格高昂的 GPT-4 回复 2000 多字通常只需要 1 人民币左右，而更常用的 ChatGPT 只要 4 分钱不到！信息差使得国内营利性 ChatGPT 镜像完全成了割墙内人韭菜的暴利灰产
+无论是兜售 OpenAI 账号还是出售“问答次数”等服务都是暴利！国内营利性 ChatGPT 镜像利用信息差完全成了割墙内人韭菜的黑产
 
 ![price](resource/price.png)  
-_直观地看出调用 GPT 接口的定价_
+_直观看出各语言模型接口的定价_
 
 ## 网络环境
 
@@ -135,9 +135,7 @@ _直观地看出调用 GPT 接口的定价_
 
 ## 有效邮箱
 
-某月某日以来，OpenAI 先后禁止了 163mail、qqmail 甚至是 outlook 邮箱（即微软账号，CloseAI 急起来连它爹都封）的注册，因此你需要一个有效的邮箱来注册 OpenAI 账号，通常推荐用 gmail 注册（edu.cn 邮箱我没试过，听说似乎也可行）
-
-[《如何使用 +86 大陆手机号注册 Gmail》](#bonus如何用大陆-86-手机号注册-gmail)
+某月某日以来，OpenAI 先后禁止了 163mail 和 qqmail 等国内邮箱的注册，因此你需要一个有效的邮箱来注册 OpenAI 账号，通常推荐用 gmail 注册（edu 邮箱我没试过，听说似乎也可行，可能和梯子节点有关）
 
 ## 海外电话
 
@@ -223,13 +221,13 @@ _[预览效果视频.mp4](resource/api.mp4)_
 
 ### Interactive Simulacra of Human Behavior
 
-> ![game demo](resource/chatgpt%20town.jpg)  
-> Generative agents create believable simulacra of human behavior for interactive applications
+![game demo](resource/chatgpt%20town.jpg)  
+Generative agents create believable simulacra of human behavior for interactive applications
 
 Park, J.S., O'Brien, J.C., Cai, C.J., Morris, M.R., Liang, P. and Bernstein, M.S., 2023. Generative Agents: Interactive Simulacra of Human Behavior. arXiv preprint arXiv:2304.03442.
 
-[view on arxiv.org](https://arxiv.org/abs/2304.03442)
-[view pdf](ChatGPT%20town.pdf)
+[view on arxiv.org](https://arxiv.org/abs/2304.03442)  
+[view pdf](chatgpt%20town.pdf)  
 [play game demo](https://reverie.herokuapp.com/arXiv_Demo/)
 
 ## 申请 API key
@@ -247,8 +245,7 @@ _你可以在 [account > usage](https://platform.openai.com/account/usage) 处�
 
 ## 使用 OpenAI API
 
-> 你可以用任何语言通过 HTTP 请求与 API 进行交互，使用我们的官方 Python 接口、官方 Node.js 库或由社区维护的库
-> https://platform.OpenAI.com/docs/API-reference
+> 你可以用任何语言通过 HTTP 请求与 API 进行交互，使用我们的官方 Python 接口、官方 Node.js 库或由社区维护的库 [API-references - OpenAI API Documentation](https://platform.openai.com/docs/api-reference)
 
 ### VScode: ChatGPT-Genie
 
@@ -299,19 +296,17 @@ _你可以在 [account > usage](https://platform.openai.com/account/usage) 处�
    [配置科学上网环境](#网络环境) ，但使用 API 时无需担心浏览器环境！
 
    ![genie](resource/genie%20gui.png)  
-   _[给项目点个 Star](https://GitHub.com/ai-genie/ChatGPT-vscode)_
+   _[给项目点个 Star](https://github.com/ai-genie/ChatGPT-vscode)_
 
 ### Android: Alissu GPT
 
 [Alissu: Chat with AI](https://play.google.com/store/apps/details?id=com.ekmen.aiapp&hl=zh-cn) 是 Google Play 中最受欢迎，最简洁，最方便的基于 OpenAI API 的安卓 gpt 应用之一。该项目允许你使用公共 API key 进行少量临时的查询，但你也可以上传自己的 API key（据其团队称不会云储存用户的 API key，但由于其似乎并非开源项目因此对 API 保密有特别高需求的同学应谨慎对待）来无限制使用 Davinci 等更昂贵的模型，获取更多的查询次数并大幅减少广告
 
 ![Alissu GPT](resource/alissu.png)  
-_在你的安卓设备上 [安装 Alissu](https://play.google.com/store/apps/details?id=com.ekmen.aiapp&hl=zh-cn)。如果你没有 google play，也可以 [从我的 Azure 容器中下载](resource/cfa-2.5.12-premium-universal-release.apk)_
+_在你的安卓设备上 [安装 Alissu](https://play.google.com/store/apps/details?id=com.ekmen.aiapp&hl=zh-cn)_
 
 ![Alissu GPT](resource/alissu%20key.jpg)  
 _点击右上角 ≡ 符号 Add Key，添加你的 Optnai API key（暂不支持 Azure OpenAI API）并修改你想用的模型（推荐 Turbo）_
-
-相关教程：[在安卓手机上配置科学上网环境并安装谷歌服务](#在安卓手机上配置科学上网环境并安装谷歌服务)
 
 # 高阶：Azure OpenAI
 
@@ -319,7 +314,7 @@ _点击右上角 ≡ 符号 Add Key，添加你的 Optnai API key（暂不支持
 
 **Let's start**
 
-该部分以使用 Azure OpenAI API 取代原生 OpenAI API 使用 VScode Genie 插件为例介绍如何使用 Azure OpenAI API。此部分需要你拥有一定网络知识，掌握使用 gpt API 的方法，并拥有一个已通过 [GitHub 学生认证](#bonusGitHub-学生认证指南) 的 GitHub 账号
+该部分以使用 Azure OpenAI API 取代原生 OpenAI API 使用 VScode Genie 插件为例介绍如何使用 Azure OpenAI API。此部分需要你拥有一定网络知识，掌握使用 gpt API 的方法，并拥有一个 **已通过 GitHub 学生认证的** GitHub 账号
 
 ## Azure 学生认证
 
@@ -417,7 +412,6 @@ _在这里输入你的 Azure OpenAI API key，长度和 sk- 开头的原生 Open
 ```
 
 [Azure OpenAI 关于 API 版本、请求与返回的文档](https://learn.microsoft.com/en-us/Azure/cognitive-services/OpenAI/reference)  
-[OpenAI 关于各 gpt 模型最大 tokens 数的文档](https://platform.OpenAI.com/docs/API-reference/completions/create#completions/create-max_tokens)
 
 完成设置后，无需翻墙就可以在 VScode 中使用 ChatGPT Genie 了
 
@@ -428,7 +422,7 @@ _在这里输入你的 Azure OpenAI API key，长度和 sk- 开头的原生 Open
 先上用例：https://nextgpt.iclash.tech （需要密码才能使用）  
 ![demo](resource/nextgpt%20demo.png)
 
-以及赞助证明：  
+以及我的赞助：  
 ![sponsor](resource/sponsor.png)
 
 ## 部署服务
@@ -460,7 +454,7 @@ _从 GitHub 导入项目后 deploy 并静候其完成（通常约 10 分钟左�
 ![vercel7](resource/add%20env.png)  
 _添加两个环境变量 CODE 和 OPENAI_API_KEY 并保存_
 
-> `OPENAI_API_KEY`是 OpenAI 密钥，你在 OpenAI 账户页面申请的 api key
+> `OPENAI_API_KEY`是 OpenAI 密钥，你在 OpenAI 账户页面申请的 API key
 >
 > `CODE`是访问密码，可以使用逗号隔开多个密码。如果不填写此项，则任何人都可以直接使用你部署后的网站，可能会导致你的 token 被迅速消耗完毕，建议填写此选项。配置密码后，用户需要在设置页手动填写访问码才可以正常聊天，否则会通过消息提示未授权状态。请务必将密码的位数设置得足够长，最好 7 位以上，否则[会被爆破](https://github.com/Yidadaa/ChatGPT-Next-Web/issues/518)。格式如：`code1,code2,code3`
 >
@@ -474,7 +468,7 @@ _重新部署项目使改动生效_
 
 ## 绑定域名
 
-先根据 [阿里云域名注册流程（2022-11-25 版）](https://developer.aliyun.com/article/1091697)注册一个心仪的域名（推荐 .tech 等国际小众顶域，绝对不推荐 .cn .xin 以及中文域名等）。然后进行实名认证，域名备案等操作，可能需要等 2 天左右才能完成
+先根据 [阿里云域名注册流程（2022-11-25 版）](https://developer.aliyun.com/article/1091697)注册一个心仪的域名（推荐 .tech 等国际小众顶域，价格相对低廉且不会被随意停止解析；绝对不推荐 .cn .xin 以及中文域名等，价格昂贵且可能突然被政府停止解析）。然后进行实名认证，域名备案等操作，可能需要等 2 天左右才能完成
 
 ![domain1](resource/iclash.png)  
 _在阿里云域名控制台选择域名进行三级域名解析_
@@ -504,7 +498,7 @@ _下载为桌面应用程序，使用更加方便_
 ![GitHub Copilot](resource/github%20copilot.png)  
 _GitHub Copilot shares recommendations based on the project's context and style conventions. Quickly cycle through lines of code, complete function suggestions, and decide which to accept, reject, or edit_
 
-以 VScode 为例，在日常文字/代码工作中使用 GitHub Copilot 与其 experimental features _**Optional\***_
+以 VScode 为例，在日常文字/代码工作中使用 GitHub Copilot 与其 experimental features
 
 ![GitHub edu](resource/github%20edu.png)  
 _首先你需要一个已 [通过 GitHub 学生认证](#GitHub-学生认证指南) 的 GitHub 账号（愿意直接掏钱买的大佬除外）_
