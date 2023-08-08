@@ -35,7 +35,6 @@
 - [高阶：部署墙内可用的 ChatGPT 网站](#高阶部署墙内可用的-chatgpt-网站)
   - [部署服务](#部署服务)
   - [绑定域名](#绑定域名)
-- [高阶：部署基于 LLM 的聊天 bots](#高阶部署基于-llm-的聊天-bots)
 - [Bonus：GitHub Copilot](#bonusgithub-copilot)
   - [Host 代理引发的错误](#host-代理引发的错误)
 
@@ -477,10 +476,6 @@ _在这里输入密码或让用户自备 API key 在下面填入_
 
 ![install](resource/install%20app.png)  
 _下载为桌面应用程序，使用更加方便_
-
-# 高阶：部署基于 LLM 的聊天 bots
-
-**_来一位大佬帮我补充下，我暂时没搞这个_**
 
 # Bonus：GitHub Copilot
 
