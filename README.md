@@ -376,10 +376,10 @@ _在这里输入你的 Azure OpenAI API key，长度和 sk- 开头的原生 Open
 打开 VScode 设置文件 setting.json（通常在 C:\Users\用户名\AppData\Roaming\Code\User\），在最外层的花括号中插入以下设置（需替换部分代码）或按需在 GUI 中修改 Genie 插件设置
 
 ```json
-"genieai.OpenAI.model": "[模型名称]",
-"genieai.OpenAI.maxTokens": "[自定义最大 tokens]", // 需小于最大 tokens
-"genieai.OpenAI.APIBaseUrl": "[Endpoint]",
-"genieai.Azure.url": "[Endpoint]/OpenAI/deployments/[模型名称][/Optional：调用方法]/completions?API-version=[你的 API 版本]",
+"genieai.openai.model": "[模型名称]",
+"genieai.openai.maxTokens": "[自定义最大 tokens]", // 需小于最大 tokens
+"genieai.openai.apiBaseUrl": "[Endpoint]",
+"genieai.azure.url": "[Endpoint]/openai/deployments/[模型名称][/Optional：调用方法]/completions?API-version=[你的 API 版本]",
 ```
 
 **_Example:_**
@@ -387,15 +387,21 @@ _在这里输入你的 Azure OpenAI API key，长度和 sk- 开头的原生 Open
 ```json
 // 可以用注释来方便地替换多个预设
 "genieai.openai.apiBaseUrl": "https://sha1rholder-gpt.openai.azure.com",
+"genieai.azure.url": "https://sha1rholder-gpt.openai.azure.com/openai/deployments/gpt4/chat/completions?api-version=2023-07-01-preview",
+"genieai.openai.model": "gpt-4",
+"genieai.openai.maxTokens": 6000,
 
-"genieai.openai.model": "gpt-3.5-turbo-0301",
-"genieai.openai.maxTokens": 7000, // < 8192
-"genieai.azure.url": "https://sha1rholder-gpt.openai.azure.com/openai/deployments/gpt35/chat/completions?api-version=2023-03-15-preview",
-"explorer.confirmDragAndDrop": false
 /*
-"genieai.openai.model": "text-davinci-003",
-"genieai.openai.maxTokens": 3800, // < 4097
-"genieai.azure.url": "https://sha1rholder-gpt.openai.azure.com/openai/deployments/tdavinci3/completions?api-version=2023-03-15-preview"
+"genieai.openai.apiBaseUrl": "https://sha1rholder-gpt.openai.azure.com",
+"genieai.azure.url": "https://sha1rholder-gpt.openai.azure.com/openai/deployments/gpt432k/chat/completions?api-version=2023-07-01-preview",
+"genieai.openai.model": "gpt-4-32k",
+"genieai.openai.maxTokens": 30000,
+*/
+
+/*
+"genieai.openai.apiBaseUrl": "https://sha1rholder.tech",
+"genieai.openai.model": "gpt-4",
+"genieai.openai.maxTokens": 6000, // < 8192
 */
 ```
 
